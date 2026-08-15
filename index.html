@@ -589,6 +589,22 @@ section[id],#top{scroll-margin-top:98px}
   width:74px;height:74px;border-radius:50%;background:var(--gold-soft);color:var(--gold-deep);
   display:flex;align-items:center;justify-content:center;margin:0 auto 26px;
 }
+.thanks .tk-ico.fail{background:#F7E9E7;color:#B4453C}
+
+/* кнопка онлайн-записи в YCLIENTS — появляется, только если задан bookingUrl */
+.book-online{display:none;margin-bottom:22px}
+.book-online.on{display:block}
+.book-online .btn{width:100%}
+.book-online .bo-note{
+  font-size:13.5px;color:var(--muted);text-align:center;margin-top:10px;line-height:1.5;
+}
+.book-or{
+  display:flex;align-items:center;gap:14px;margin:0 0 22px;
+  font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;
+}
+.book-or::before,.book-or::after{content:"";flex:1;height:1px;background:var(--line)}
+.book-or{display:none}
+.book-or.on{display:flex}
 .thanks h3{font-size:28px;margin-bottom:14px}
 .thanks p{color:var(--muted);font-size:16.5px;max-width:430px;margin:0 auto 28px;line-height:1.65}
 .thanks .tk-sum{
@@ -1528,6 +1544,15 @@ section[id],#top{scroll-margin-top:98px}
       </div>
 
       <div class="rv">
+        <div class="book-online" id="bookOnline">
+          <a class="btn btn-primary" id="bookOnlineLink" href="#" target="_blank" rel="noopener">
+            Выбрать время онлайн
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+          </a>
+          <p class="bo-note">Реальное расписание мастеров — запись подтвердится сразу</p>
+        </div>
+        <p class="book-or" id="bookOr"><span>или оставьте заявку</span></p>
+
         <form class="form" id="bookForm" novalidate>
           <div class="f-row">
             <div class="field" id="f-name">
@@ -1628,6 +1653,20 @@ section[id],#top{scroll-margin-top:98px}
           <p>Спасибо! Анаит перезвонит с ближайшего свободного окна и подтвердит время.</p>
           <ul class="tk-sum" id="tkSum"></ul>
           <button class="btn btn-ghost" id="tkBack" type="button">Оставить ещё одну заявку</button>
+        </div>
+
+        <div class="form thanks" id="sendfail" role="alert" aria-live="assertive">
+          <div class="tk-ico fail" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 8v5"/><path d="M12 16.5v.5"/><circle cx="12" cy="12" r="9"/></svg>
+          </div>
+          <h3>Заявка не ушла</h3>
+          <p>Связь с сервером записи не удалась, и мы не хотим обещать лишнего. Позвоните или напишите — ответим сразу и запишем вручную.</p>
+          <ul class="tk-sum" id="failSum"></ul>
+          <div class="form-alt" style="justify-content:center">
+            <a class="btn btn-primary" href="tel:+79256993999">Позвонить</a>
+            <a class="btn btn-ghost" href="https://t.me/madonna_beauty_kotelniki" target="_blank" rel="noopener">Написать в Telegram</a>
+          </div>
+          <p class="form-hint"><button type="button" id="failBack" style="background:none;border:0;padding:0;color:var(--gold-deep);text-decoration:underline;text-underline-offset:2px;cursor:pointer;font:inherit">Вернуться к форме и попробовать ещё раз</button></p>
         </div>
       </div>
 
@@ -1790,6 +1829,29 @@ section[id],#top{scroll-margin-top:98px}
 <script>
 (function(){
   'use strict';
+
+  /* ==================================================================
+     НАСТРОЙКИ САЙТА — единственное место, где нужно что-то вписать.
+     ==================================================================
+
+     formEndpoint — куда уходит заявка из формы записи.
+       Пока строка пустая, форма честно говорит человеку «не отправилось,
+       позвоните» и НЕ делает вид, что запись принята.
+       Вписать сюда URL форм-сервиса (например https://formspree.io/f/xxxxxxx)
+       или адрес своего прокси. См. комментарий у функции submitBooking ниже.
+
+     bookingUrl — ссылка на онлайн-запись салона в YCLIENTS.
+       Если её заполнить, в блоке записи автоматически появится кнопка
+       «Выбрать время онлайн» — человек попадёт в реальное расписание
+       мастеров, а заявка сразу окажется в CRM салона.
+       Где взять: в личном кабинете YCLIENTS → «Онлайн-запись» → «Ссылка
+       на виджет»; либо скопировать адрес, который открывает кнопка
+       «Записаться» в карточке салона на Яндекс.Картах.
+     ================================================================== */
+  var SITE_CONFIG = {
+    formEndpoint: '',
+    bookingUrl:   ''
+  };
 
   var $  = function(s,c){ return (c||document).querySelector(s); };
   var $$ = function(s,c){ return Array.prototype.slice.call((c||document).querySelectorAll(s)); };
@@ -2069,8 +2131,15 @@ section[id],#top{scroll-margin-top:98px}
   phone.addEventListener('paste', function(){ setTimeout(applyMask, 0); });
 
   /* ---------- ВАЛИДАЦИЯ И ОТПРАВКА ---------- */
-  var form = $('#bookForm'), thanks = $('#thanks');
+  var form = $('#bookForm'), thanks = $('#thanks'), sendfail = $('#sendfail');
   var dateInput = $('#in-date');
+
+  /* Кнопка онлайн-записи включается сама, если в SITE_CONFIG задан bookingUrl */
+  if (SITE_CONFIG.bookingUrl){
+    $('#bookOnlineLink').href = SITE_CONFIG.bookingUrl;
+    $('#bookOnline').classList.add('on');
+    $('#bookOr').classList.add('on');
+  }
   // минимальная дата — сегодня
   (function(){
     var t = new Date();
@@ -2126,28 +2195,42 @@ section[id],#top{scroll-margin-top:98px}
   }
 
   /**
-   * submitBooking(data)
+   * submitBooking(data) — отправка заявки.
    * ------------------------------------------------------------------
-   * ЗДЕСЬ ПОДКЛЮЧАЕТСЯ ОТПРАВКА ЗАЯВКИ.
-   * Сейчас функция просто выводит данные в консоль браузера.
+   * Адрес приёмника берётся из SITE_CONFIG.formEndpoint в начале скрипта.
+   * Пока он пустой, форма НЕ показывает «заявка принята»: вместо этого
+   * человек видит честный экран «не отправилось» с телефоном и Telegram.
+   * Так ни одна заявка не пропадает молча.
    *
-   * Вариант 1 — свой backend / форма-сервис (Formspree, Getform и т.п.):
+   * Вариант 1 — форм-сервис без своего сервера (Formspree, Getform, FormSubmit):
+   *   зарегистрироваться, получить URL вида https://formspree.io/f/xxxxxxx
+   *   и вписать его в SITE_CONFIG.formEndpoint. Заявки приходят на почту.
    *
-   *   return fetch('https://ВАШ-ENDPOINT', {
-   *     method: 'POST',
-   *     headers: {'Content-Type': 'application/json'},
-   *     body: JSON.stringify(data)
-   *   }).then(function(r){ if(!r.ok) throw new Error('Ошибка отправки'); });
+   * Вариант 2 — Telegram-бот: токен НЕЛЬЗЯ класть в этот файл, он публичный.
+   *   Нужен маленький прокси (Cloudflare Worker и подобное), который примет
+   *   POST и сам дёрнет Bot API sendMessage. В formEndpoint — адрес прокси.
    *
-   * Вариант 2 — Telegram-бот (токен держать на сервере, не в этом файле):
-   *   отправлять POST на свой прокси, который дёргает Bot API sendMessage.
-   *
-   * Вариант 3 — CRM салона (YCLIENTS, Arnica и др.): POST в их API записи.
+   * Вариант 3 — YCLIENTS: у салона он уже есть. Через API записи нужен
+   *   партнёрский токен и сервер; проще вести людей в готовый виджет —
+   *   см. SITE_CONFIG.bookingUrl.
    * ------------------------------------------------------------------
    */
   function submitBooking(data){
-    console.log('Заявка на запись «Мадонна»:', data);
-    return Promise.resolve(true);
+    if (!SITE_CONFIG.formEndpoint){
+      console.warn(
+        'Форма не подключена: SITE_CONFIG.formEndpoint пустой. Заявка НЕ отправлена.\n' +
+        'Данные заявки:', data
+      );
+      return Promise.reject(new Error('not-configured'));
+    }
+    return fetch(SITE_CONFIG.formEndpoint, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify(data)
+    }).then(function(r){
+      if (!r.ok) throw new Error('Ошибка отправки: HTTP ' + r.status);
+      return true;
+    });
   }
 
   form.addEventListener('submit', function(e){
@@ -2161,7 +2244,8 @@ section[id],#top{scroll-margin-top:98px}
       master:  selMaster.value,
       date:    dateInput.value || 'не указана',
       note:    $('#in-note').value.trim(),
-      page:    location.href,
+      /* только адрес страницы, без query и хвостов — чтобы не тащить лишнее */
+      page:    (location.origin + location.pathname).slice(0, 200),
       sentAt:  new Date().toISOString()
     };
 
@@ -2169,9 +2253,8 @@ section[id],#top{scroll-margin-top:98px}
     btn.disabled = true;
     btn.textContent = 'Отправляем…';
 
-    submitBooking(data).then(function(){
-      var sum = $('#tkSum');
-      sum.innerHTML = '';
+    function fillSummary(listEl){
+      listEl.innerHTML = '';
       [['Имя', data.name],
        ['Телефон', data.phone],
        ['Услуга', data.service],
@@ -2181,17 +2264,31 @@ section[id],#top{scroll-margin-top:98px}
         var s = document.createElement('span'); s.textContent = pair[0];
         var b = document.createElement('b');    b.textContent = pair[1];
         li.appendChild(s); li.appendChild(b);
-        sum.appendChild(li);
+        listEl.appendChild(li);
       });
+    }
+
+    submitBooking(data).then(function(){
+      fillSummary($('#tkSum'));
       form.style.display = 'none';
       thanks.classList.add('show');
       thanks.scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block:'center'});
     }).catch(function(){
-      alert('Не получилось отправить заявку. Позвоните нам: +7 (925) 699-39-99');
+      /* Ничего не отправилось — говорим об этом прямо, а не рисуем «принято» */
+      fillSummary($('#failSum'));
+      form.style.display = 'none';
+      sendfail.classList.add('show');
+      sendfail.scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block:'center'});
     }).then(function(){
       btn.disabled = false;
       btn.textContent = 'Записаться';
     });
+  });
+
+  $('#failBack').addEventListener('click', function(){
+    sendfail.classList.remove('show');
+    form.style.display = '';
+    $('#in-name').focus();
   });
 
   $('#tkBack').addEventListener('click', function(){
