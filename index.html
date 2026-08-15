@@ -61,7 +61,8 @@
   "@type": "BeautySalon",
   "name": "Мадонна",
   "alternateName": "Madonna Beauty",
-  "description": "Салон красоты полного цикла в Люберцах, в 900 метрах от метро Котельники: маникюр, педикюр, окрашивание и уход за волосами, брови и ресницы, макияж и перманент, косметология, лазерная эпиляция, солярий.",
+  "description": "Салон красоты полного цикла в Люберцах, в 900 метрах от метро Котельники: маникюр, педикюр, окрашивание и уход за волосами, брови и ресницы, макияж и перманент, косметология, лазерная эпиляция, солярий. Работает ежедневно до 22:00.",
+  "_комментарий": "Точное время открытия и координаты организации в разметку не внесены — их нужно взять из карточки салона и добавить как openingHours и geo. Ставить приблизительные значения нельзя: их показывают в поиске.",
   "image": "https://yandex.ru/maps/org/madonna/155030243880/",
   "address": {
     "@type": "PostalAddress",
@@ -70,20 +71,15 @@
     "addressRegion": "Московская область",
     "addressCountry": "RU"
   },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 55.663,
-    "longitude": 37.858
-  },
   "telephone": "+7 925 699-39-99",
-  "openingHours": "Mo-Su 09:00-22:00",
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-    "opens": "09:00",
-    "closes": "22:00"
-  },
   "priceRange": "₽₽",
+  "paymentAccepted": "Оплата картой",
+  "amenityFeature": [
+    {"@type": "LocationFeatureSpecification", "name": "Парковка", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "Wi-Fi", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "Можно с собакой", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "Вход доступен для инвалидной коляски", "value": true}
+  ],
   "currenciesAccepted": "RUB",
   "aggregateRating": {
     "@type": "AggregateRating",
@@ -583,6 +579,11 @@ section[id],#top{scroll-margin-top:98px}
 }
 
 /* ============ CONTACTS ============ */
+.perks{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.perks li{
+  font-size:13.5px;color:var(--muted);background:var(--surface);
+  border:1px solid var(--line);border-radius:999px;padding:8px 15px;
+}
 .cont-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
 .cont-list li{padding:22px 0;border-bottom:1px solid var(--line);display:flex;gap:16px;align-items:flex-start}
 .cont-list li:first-child{padding-top:0}
@@ -960,8 +961,7 @@ section[id],#top{scroll-margin-top:98px}
             <h3>Ногти</h3>
             <ul class="svc-list">
               <li>Классический маникюр и педикюр</li>
-              <li>Покрытие гель-лаком</li>
-              <li>Комбо маникюр + педикюр + покрытие</li>
+              <li>Комбо: маникюр + педикюр + покрытие</li>
               <li>Мастера Жанна, Владислава, Тамара</li>
             </ul>
             <div class="svc-price">
@@ -1056,8 +1056,7 @@ section[id],#top{scroll-margin-top:98px}
             <ul class="svc-list">
               <li>Дневной макияж</li>
               <li>Перманентный макияж губ</li>
-              <li>Образ на праздник и съёмку</li>
-              <li>Можно совместить с укладкой</li>
+             <li>Можно совместить с укладкой</li>
             </ul>
             <div class="svc-price">
               <span class="pf">Макияж от</span>
@@ -1085,7 +1084,7 @@ section[id],#top{scroll-margin-top:98px}
             <h3>Косметология и эпиляция</h3>
             <ul class="svc-list">
               <li>Лазерная эпиляция</li>
-              <li>Уход за лицом</li>
+              <li>Косметология — по консультации</li>
               <li>Липолитики</li>
               <li>Косметолог Лолита, эпиляция — Мадонна</li>
             </ul>
@@ -1116,7 +1115,7 @@ section[id],#top{scroll-margin-top:98px}
             <h3>Солярий</h3>
             <ul class="svc-list">
               <li>Оплата поминутно</li>
-              <li>Можно зайти без записи</li>
+              <li>Моментальный загар</li>
               <li>Удобно совместить с маникюром</li>
               <li>Работает до 22:00</li>
             </ul>
@@ -1153,7 +1152,7 @@ section[id],#top{scroll-margin-top:98px}
         <article class="step rv">
           <span class="num" aria-hidden="true">01</span>
           <h3>Записались за минуту</h3>
-          <p>Форма на сайте, звонок или Telegram. Администратор Анаит подтвердит время.</p>
+          <p>Онлайн-запись на этой странице, звонок или Telegram — что удобнее. В расписании сразу видно, где есть свободное окно.</p>
         </article>
         <article class="step rv">
           <span class="num" aria-hidden="true">02</span>
@@ -1168,7 +1167,7 @@ section[id],#top{scroll-margin-top:98px}
         <article class="step rv">
           <span class="num" aria-hidden="true">04</span>
           <h3>Уход и следующий раз</h3>
-          <p>Мастер расскажет, как сохранить результат дома, и сразу запишет вас на удобную дату.</p>
+          <p>Мастер расскажет, как сохранить результат дома. На следующий раз можно записаться тут же или потом, онлайн.</p>
         </article>
       </div>
     </div>
@@ -1195,7 +1194,7 @@ section[id],#top{scroll-margin-top:98px}
           <div class="mstr-body">
             <h3>Марина</h3>
             <p class="role">Колорист-стилист</p>
-            <p>Окрашивание, кератин, стрижки, ламинирование. Берётся за волосы, которые «уже никак» — и возвращает им вид.</p>
+            <p>Окрашивание, кератин, стрижки, ламинирование. Её имя в отзывах встречается чаще других: «Марина буквально реанимировала мои волосы».</p>
             <a class="btn btn-soft btn-sm btn-block" href="#booking">Записаться к Марине</a>
           </div>
         </article>
@@ -1208,7 +1207,7 @@ section[id],#top{scroll-margin-top:98px}
           <div class="mstr-body">
             <h3>Жанна</h3>
             <p class="role">Маникюр и педикюр</p>
-            <p>Аккуратность, за которую её отдельно благодарят в отзывах. Форма — как просили, а не «как удобнее».</p>
+            <p>Маникюр и педикюр. Про её работу в отзывах написали коротко: «просто совершенство».</p>
             <a class="btn btn-soft btn-sm btn-block" href="#booking">Записаться к Жанне</a>
           </div>
         </article>
@@ -1221,7 +1220,7 @@ section[id],#top{scroll-margin-top:98px}
           <div class="mstr-body">
             <h3>Тамара</h3>
             <p class="role">Педикюр</p>
-            <p>Работает спокойно и без спешки. После её педикюра ноги лёгкие, даже если весь день на каблуках.</p>
+            <p>Педикюр — классический, с покрытием и без. В отзывах её называют мастерицей.</p>
             <a class="btn btn-soft btn-sm btn-block" href="#booking">Записаться к Тамаре</a>
           </div>
         </article>
@@ -1234,7 +1233,7 @@ section[id],#top{scroll-margin-top:98px}
           <div class="mstr-body">
             <h3>Владислава</h3>
             <p class="role">Маникюр</p>
-            <p>Любит чистый минимализм и тонкую работу. Покажите картинку — поймёт с полуслова.</p>
+            <p>Маникюр: форма, длина, покрытие — как договоритесь. Работает в зале ногтевого сервиса.</p>
             <a class="btn btn-soft btn-sm btn-block" href="#booking">Записаться к Владиславе</a>
           </div>
         </article>
@@ -1247,7 +1246,7 @@ section[id],#top{scroll-margin-top:98px}
           <div class="mstr-body">
             <h3>Ксения</h3>
             <p class="role">Брови</p>
-            <p>Архитектура под форму лица, а не под моду. Делает так, чтобы брови были ваши, только ровнее.</p>
+            <p>Брови: архитектура, коррекция формы, оттенок. Ламинирование ресниц — тоже к ней.</p>
             <a class="btn btn-soft btn-sm btn-block" href="#booking">Записаться к Ксении</a>
           </div>
         </article>
@@ -1260,7 +1259,7 @@ section[id],#top{scroll-margin-top:98px}
           <div class="mstr-body">
             <h3>Лолита</h3>
             <p class="role">Косметолог</p>
-            <p>Уход за лицом и липолитики. Сначала поговорит, потом предложит — а не наоборот.</p>
+            <p>Косметология и липолитики. Что именно делать и сколько это стоит — решается на консультации.</p>
             <a class="btn btn-soft btn-sm btn-block" href="#booking">Записаться к Лолите</a>
           </div>
         </article>
@@ -1273,7 +1272,7 @@ section[id],#top{scroll-margin-top:98px}
           <div class="mstr-body">
             <h3>Мадонна</h3>
             <p class="role">Лазерная эпиляция</p>
-            <p>Объяснит, сколько понадобится визитов и чего ждать после первого. Лишнего не пообещает.</p>
+            <p>Лазерная эпиляция — от 5 000 ₽. Сколько понадобится визитов, скажет после консультации.</p>
             <a class="btn btn-soft btn-sm btn-block" href="#booking">Записаться к Мадонне</a>
           </div>
         </article>
@@ -1286,7 +1285,7 @@ section[id],#top{scroll-margin-top:98px}
           <div class="mstr-body">
             <h3>Анаит</h3>
             <p class="role">Администратор</p>
-            <p>Подберёт время, подскажет мастера под запрос и встретит кофе. С неё начинается визит.</p>
+            <p>Отвечает на звонки, подбирает время и мастера. В отзывах её отдельно благодарят за внимательность.</p>
             <a class="btn btn-soft btn-sm btn-block" href="tel:+79256993999">Позвонить и спросить</a>
           </div>
         </article>
@@ -1449,32 +1448,32 @@ section[id],#top{scroll-margin-top:98px}
       <div class="faq rv">
         <article class="faq-item">
           <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a1">Как записаться и можно ли прийти сегодня?<span class="pm" aria-hidden="true"></span></button></h3>
-          <div class="faq-a" id="faq-a1"><p>Запишитесь онлайн в блоке записи на этой странице, позвоните по <a href="tel:+79256993999">+7 (925) 699-39-99</a> или напишите в <a href="https://t.me/madonna_beauty_kotelniki" target="_blank" rel="noopener">Telegram</a>. Сегодня — часто да: окна появляются в течение дня, особенно вечером. Позвоните, Анаит посмотрит расписание прямо при вас.</p></div>
+          <div class="faq-a" id="faq-a1"><p>Запишитесь онлайн в блоке записи на этой странице, позвоните по <a href="tel:+79256993999">+7 (925) 699-39-99</a> или напишите в <a href="https://t.me/madonna_beauty_kotelniki" target="_blank" rel="noopener">Telegram</a>. В расписании онлайн-записи сразу видно, есть ли свободное время на сегодня, — смотреть можно без звонка. Если удобнее голосом, позвоните: администратор подскажет.</p></div>
         </article>
 
         <article class="faq-item">
           <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a2">Сколько времени это займёт?<span class="pm" aria-hidden="true"></span></button></h3>
-          <div class="faq-a" id="faq-a2"><p>Обычно 60–120 минут. Маникюр с покрытием — около полутора часов, окрашивание и кератин — дольше, зависит от длины. Точное время назовём при записи, чтобы вы спланировали день.</p></div>
+          <div class="faq-a" id="faq-a2"><p>Чаще всего 60–120 минут. Окрашивание, кератин и ламинирование — дольше: всё упирается в длину волос. Точное время мастер назовёт, когда вы договоритесь, что именно делаем.</p></div>
         </article>
 
         <article class="faq-item">
           <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a3">Можно записаться к конкретному мастеру?<span class="pm" aria-hidden="true"></span></button></h3>
-          <div class="faq-a" id="faq-a3"><p>Конечно, ради этого к нам и ходят. Выберите Марину, Жанну, Тамару, Владиславу, Ксению, Лолиту или Мадонну в форме записи. Если имя пока ни о чём не говорит — оставьте «любой свободный», подберём под ваш запрос.</p></div>
+          <div class="faq-a" id="faq-a3"><p>Да, ради этого сюда и ходят. В онлайн-записи мастера перечислены по именам — выбираете нужного и видите его свободные окна. Если имя пока ни о чём не говорит, позвоните: администратор подберёт мастера под то, что вы хотите.</p></div>
         </article>
 
         <article class="faq-item">
           <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a4">Как добраться от Котельников и где припарковаться?<span class="pm" aria-hidden="true"></span></button></h3>
-          <div class="faq-a" id="faq-a4"><p>От метро Котельники около 900 метров — минут десять пешком. Рядом также Жулебино и Лермонтовский проспект. Адрес: ул. Лётчика Ларюшина, 10, первый этаж. На машине оставляйте её на дворовой парковке у дома — маршрут удобно построить прямо <a href="https://yandex.ru/maps/org/madonna/155030243880/" target="_blank" rel="noopener">через Яндекс.Карты</a>.</p></div>
+          <div class="faq-a" id="faq-a4"><p>От метро Котельники около 900 метров — минут десять пешком. Рядом Жулебино и Лермонтовский проспект. Адрес: ул. Лётчика Ларюшина, 10, первый этаж. Парковка есть, вход доступен для коляски. Маршрут удобнее построить <a href="https://yandex.ru/maps/org/madonna/155030243880/" target="_blank" rel="noopener">через Яндекс.Карты</a>.</p></div>
         </article>
 
         <article class="faq-item">
           <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a5">Можно сделать всё за один визит?<span class="pm" aria-hidden="true"></span></button></h3>
-          <div class="faq-a" id="faq-a5"><p>Да, это наш обычный сценарий: цвет, маникюр, брови и солярий подряд. Скажите при записи, что хотите совместить, — мы соберём мастеров на одно время, чтобы вы не ждали между услугами.</p></div>
+          <div class="faq-a" id="faq-a5"><p>Обычно да — салон полного цикла, всё в одном зале: цвет, ногти, брови, солярий. Скажите заранее, что хотите совместить, чтобы вам подобрали время без долгих пауз между мастерами.</p></div>
         </article>
 
         <article class="faq-item">
           <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a6">Как оплатить?<span class="pm" aria-hidden="true"></span></button></h3>
-          <div class="faq-a" id="faq-a6"><p>Наличными, картой или переводом по QR — как удобнее. Оплата после работы, когда результат вам понравился. Предоплату не берём.</p></div>
+          <div class="faq-a" id="faq-a6"><p>Картой — это указано в карточке салона на Яндекс.Картах. Про остальные способы спросите администратора при записи. Есть подарочные сертификаты, если хотите подарить визит.</p></div>
         </article>
       </div>
     </div>
@@ -1498,7 +1497,7 @@ section[id],#top{scroll-margin-top:98px}
           </li>
           <li>
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-            Оплата после работы, предоплату не берём
+            Не нашли подходящее окно — напишите в Telegram или позвоните
           </li>
         </ul>
         <div class="photo-slot" role="img" aria-label="Фотография зоны ожидания в салоне Мадонна">
@@ -1612,6 +1611,16 @@ section[id],#top{scroll-margin-top:98px}
                 <p class="cs">Без выходных — и в праздники тоже.</p>
               </div>
             </li>
+          </ul>
+
+          <!-- Данные из карточки салона на Яндекс.Картах, раздел «Особенности» -->
+          <ul class="perks" aria-label="Удобства салона">
+            <li>Парковка</li>
+            <li>Wi-Fi</li>
+            <li>Оплата картой</li>
+            <li>Можно с собакой</li>
+            <li>Подарочные сертификаты</li>
+            <li>Вход доступен для коляски</li>
           </ul>
         </div>
 
