@@ -547,84 +547,40 @@ section[id],#top{scroll-margin-top:98px}
   padding:11px 0;line-height:1.55;
 }
 .book-side .side-list svg{color:var(--gold);flex:none;margin-top:4px}
-.form{
+.book-card{
   background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-lg);
-  padding:38px;box-shadow:var(--shadow);
+  padding:32px;box-shadow:var(--shadow);
 }
-.f-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.field{margin-bottom:20px}
-.field label{display:block;font-size:14px;font-weight:500;margin-bottom:9px;color:var(--ink)}
-.field label .req{color:var(--gold-deep)}
-.field input,.field select,.field textarea{
-  width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:12px;
-  background:var(--surface);color:var(--ink);font-family:inherit;font-size:16px;
-  transition:border-color .2s var(--ease),box-shadow .2s var(--ease);
-}
-.field textarea{resize:vertical;min-height:96px;line-height:1.55}
-.field select{
-  appearance:none;-webkit-appearance:none;cursor:pointer;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23C2A25A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 16px center;padding-right:42px;
-}
-.field input:hover,.field select:hover,.field textarea:hover{border-color:#D8CDB8}
-.field input:focus,.field select:focus,.field textarea:focus{
-  border-color:var(--gold);box-shadow:0 0 0 3px rgba(194,162,90,.16);outline:none;
-}
-.field.err input,.field.err select,.field.err textarea{border-color:#B4453C;background:#FDF7F6}
-.err-msg{display:none;font-size:13.5px;color:#B4453C;margin-top:7px;line-height:1.4}
-.field.err .err-msg{display:block}
-.consent{display:flex;gap:12px;align-items:flex-start;margin:6px 0 24px;font-size:13.5px;color:var(--muted);line-height:1.55}
-.consent input{width:19px;height:19px;flex:none;margin-top:2px;accent-color:var(--gold-deep);cursor:pointer}
-.consent a{color:var(--gold-deep)}
-.consent.err{color:#B4453C}
-.form-alt{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
-.form-alt .btn{flex:1;min-width:190px}
-.form-hint{font-size:13.5px;color:var(--muted);text-align:center;margin-top:18px;line-height:1.5}
-
-.thanks{
-  display:none;text-align:center;padding:44px 24px;
-}
-.thanks.show{display:block}
-.thanks .tk-ico{
-  width:74px;height:74px;border-radius:50%;background:var(--gold-soft);color:var(--gold-deep);
-  display:flex;align-items:center;justify-content:center;margin:0 auto 26px;
-}
-.thanks .tk-ico.fail{background:#F7E9E7;color:#B4453C}
-
-/* кнопка онлайн-записи в YCLIENTS — появляется, только если задан bookingUrl */
-.book-online{display:none;margin-bottom:22px}
-.book-online.on{display:block}
-.book-online .btn{width:100%;padding:19px 30px;font-size:16px}
-
-/* переключатель формы-запасного канала (виден только в режиме онлайн-записи) */
-.form-toggle{
-  width:100%;background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-sm);
-  padding:17px 22px;cursor:pointer;text-align:left;font-size:15px;color:var(--ink);
-  display:flex;align-items:center;justify-content:space-between;gap:16px;
-  transition:border-color .2s var(--ease);
-}
-.form-toggle:hover{border-color:var(--gold)}
-.form-toggle .chev{color:var(--gold);display:flex;flex:none;transition:transform .3s var(--ease)}
-.form-toggle[aria-expanded="true"] .chev{transform:rotate(180deg)}
-.form-toggle[aria-expanded="true"]{margin-bottom:18px}
-.book-online .bo-note{
-  font-size:13.5px;color:var(--muted);text-align:center;margin-top:10px;line-height:1.5;
+.book-card .btn-block{padding:19px 30px;font-size:16px}
+.bo-note{
+  font-size:13.5px;color:var(--muted);text-align:center;margin-top:12px;line-height:1.5;
 }
 .book-or{
-  display:flex;align-items:center;gap:14px;margin:0 0 22px;
-  font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;
+  display:flex;align-items:center;gap:14px;margin:26px 0 20px;
+  font-size:12px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;
 }
 .book-or::before,.book-or::after{content:"";flex:1;height:1px;background:var(--line)}
-.book-or{display:none}
-.book-or.on{display:flex}
-.thanks h3{font-size:28px;margin-bottom:14px}
-.thanks p{color:var(--muted);font-size:16.5px;max-width:430px;margin:0 auto 28px;line-height:1.65}
-.thanks .tk-sum{
+
+.ways{display:flex;flex-direction:column;gap:10px}
+.ways a{
+  display:flex;align-items:center;gap:16px;text-decoration:none;
   background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
-  padding:20px 24px;text-align:left;max-width:420px;margin:0 auto 28px;font-size:15px;
+  padding:16px 18px;
+  transition:border-color .22s var(--ease),transform .22s var(--ease),box-shadow .22s var(--ease);
 }
-.thanks .tk-sum li{display:flex;justify-content:space-between;gap:16px;padding:7px 0;color:var(--muted)}
-.thanks .tk-sum li b{color:var(--ink);font-weight:500;text-align:right}
+.ways a:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:var(--shadow)}
+.way-ico{
+  width:42px;height:42px;border-radius:12px;background:var(--gold-soft);color:var(--gold-deep);
+  display:flex;align-items:center;justify-content:center;flex:none;
+}
+.way-txt{display:flex;flex-direction:column;gap:3px;min-width:0}
+.way-txt b{font-weight:500;font-size:16px;color:var(--ink)}
+.way-txt small{font-size:13.5px;color:var(--muted);line-height:1.45}
+.way-go{color:var(--gold);flex:none;margin-left:auto;display:flex}
+.book-foot{
+  margin-top:24px;padding-top:20px;border-top:1px solid var(--line);
+  font-size:13.5px;color:var(--muted);text-align:center;line-height:1.5;
+}
 
 /* ============ CONTACTS ============ */
 .cont-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
@@ -706,21 +662,6 @@ section[id],#top{scroll-margin-top:98px}
 .aw-y{
   position:relative;font-family:'Playfair Display',serif;font-size:18px;
   line-height:1;margin-top:4px;color:var(--ink);
-}
-
-/* ============ ЧИПЫ БЫСТРОГО ВЫБОРА УСЛУГИ В ФОРМЕ ============ */
-.chips-label{
-  display:block;font-size:14px;font-weight:500;margin-bottom:9px;color:var(--ink);
-}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{
-  padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);
-  font-size:14px;color:var(--muted);cursor:pointer;
-  transition:border-color .2s var(--ease),background .2s var(--ease),color .2s var(--ease);
-}
-.chip:hover{border-color:var(--gold);color:var(--ink)}
-.chip[aria-pressed="true"]{
-  background:var(--gold-soft);border-color:var(--gold);color:var(--ink);font-weight:500;
 }
 
 /* ============ ЛИПКАЯ ПАНЕЛЬ ДЕЙСТВИЙ НА МОБИЛЬНОМ ============ */
@@ -816,8 +757,7 @@ section[id],#top{scroll-margin-top:98px}
   .step .num{font-size:40px}
   .val{padding:28px 24px}
   .svc-body,.mstr-body{padding:24px 22px}
-  .form{padding:26px 20px}
-  .f-row{grid-template-columns:1fr;gap:0}
+  .book-card{padding:24px 20px}
   .price-box{padding:6px 20px}
   .price-row{flex-wrap:wrap;gap:4px 12px;padding:16px 0}
   .price-row .pn{max-width:100%;flex:1 1 100%;font-size:15.5px}
@@ -834,12 +774,11 @@ section[id],#top{scroll-margin-top:98px}
   .lb-prev{left:6px}
   .lb-next{right:6px}
   .lb-cap{padding:0 8px}
-  .thanks h3{font-size:24px}
   .map iframe{height:340px}
 
   /* на мобильном ни один связный текст не должен быть мельче 15px */
-  .svc-panel-in li,.price-note,.cont-list .cs,.form-hint,
-  .rev figcaption,.consent,.err-msg,.lb-cap,.ftr-bot,.ftr-bot button{font-size:15px}
+  .svc-panel-in li,.price-note,.cont-list .cs,.bo-note,.book-foot,
+  .rev figcaption,.way-txt small,.lb-cap,.ftr-bot,.ftr-bot button{font-size:15px}
   .trust span{font-size:14.5px}
   .hero-badge .hb-txt{font-size:13px}
   .btn-sm{font-size:15px;padding:13px 22px}
@@ -1257,7 +1196,7 @@ section[id],#top{scroll-margin-top:98px}
             <h3>Марина</h3>
             <p class="role">Колорист-стилист</p>
             <p>Окрашивание, кератин, стрижки, ламинирование. Берётся за волосы, которые «уже никак» — и возвращает им вид.</p>
-            <button class="btn btn-soft btn-sm btn-block js-book" data-master="Марина">Записаться к Марине</button>
+            <a class="btn btn-soft btn-sm btn-block" href="#booking">Записаться к Марине</a>
           </div>
         </article>
 
@@ -1270,7 +1209,7 @@ section[id],#top{scroll-margin-top:98px}
             <h3>Жанна</h3>
             <p class="role">Маникюр и педикюр</p>
             <p>Аккуратность, за которую её отдельно благодарят в отзывах. Форма — как просили, а не «как удобнее».</p>
-            <button class="btn btn-soft btn-sm btn-block js-book" data-master="Жанна">Записаться к Жанне</button>
+            <a class="btn btn-soft btn-sm btn-block" href="#booking">Записаться к Жанне</a>
           </div>
         </article>
 
@@ -1283,7 +1222,7 @@ section[id],#top{scroll-margin-top:98px}
             <h3>Тамара</h3>
             <p class="role">Педикюр</p>
             <p>Работает спокойно и без спешки. После её педикюра ноги лёгкие, даже если весь день на каблуках.</p>
-            <button class="btn btn-soft btn-sm btn-block js-book" data-master="Тамара">Записаться к Тамаре</button>
+            <a class="btn btn-soft btn-sm btn-block" href="#booking">Записаться к Тамаре</a>
           </div>
         </article>
 
@@ -1296,7 +1235,7 @@ section[id],#top{scroll-margin-top:98px}
             <h3>Владислава</h3>
             <p class="role">Маникюр</p>
             <p>Любит чистый минимализм и тонкую работу. Покажите картинку — поймёт с полуслова.</p>
-            <button class="btn btn-soft btn-sm btn-block js-book" data-master="Владислава">Записаться к Владиславе</button>
+            <a class="btn btn-soft btn-sm btn-block" href="#booking">Записаться к Владиславе</a>
           </div>
         </article>
 
@@ -1309,7 +1248,7 @@ section[id],#top{scroll-margin-top:98px}
             <h3>Ксения</h3>
             <p class="role">Брови</p>
             <p>Архитектура под форму лица, а не под моду. Делает так, чтобы брови были ваши, только ровнее.</p>
-            <button class="btn btn-soft btn-sm btn-block js-book" data-master="Ксения">Записаться к Ксении</button>
+            <a class="btn btn-soft btn-sm btn-block" href="#booking">Записаться к Ксении</a>
           </div>
         </article>
 
@@ -1322,7 +1261,7 @@ section[id],#top{scroll-margin-top:98px}
             <h3>Лолита</h3>
             <p class="role">Косметолог</p>
             <p>Уход за лицом и липолитики. Сначала поговорит, потом предложит — а не наоборот.</p>
-            <button class="btn btn-soft btn-sm btn-block js-book" data-master="Лолита">Записаться к Лолите</button>
+            <a class="btn btn-soft btn-sm btn-block" href="#booking">Записаться к Лолите</a>
           </div>
         </article>
 
@@ -1335,7 +1274,7 @@ section[id],#top{scroll-margin-top:98px}
             <h3>Мадонна</h3>
             <p class="role">Лазерная эпиляция</p>
             <p>Объяснит, сколько понадобится визитов и чего ждать после первого. Лишнего не пообещает.</p>
-            <button class="btn btn-soft btn-sm btn-block js-book" data-master="Мадонна">Записаться к Мадонне</button>
+            <a class="btn btn-soft btn-sm btn-block" href="#booking">Записаться к Мадонне</a>
           </div>
         </article>
 
@@ -1541,32 +1480,14 @@ section[id],#top{scroll-margin-top:98px}
     </div>
   </section>
 
-  <!-- ==================== BOOKING ==================== -->
+  <!-- ==================== ЗАПИСЬ ==================== -->
   <section class="booking" id="booking" aria-labelledby="bk-h">
     <div class="wrap book-grid">
 
       <div class="book-side rv">
         <p class="eyebrow">Запись</p>
-        <h2 id="bk-h" data-online-title="Выберите удобное время">Оставьте заявку — перезвоним</h2>
-
-        <!-- Вариант текста, когда онлайн-запись ещё не подключена -->
-        <ul class="side-list" data-mode="form">
-          <li>
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-            Перезваниваем в рабочие часы, обычно в течение 15 минут
-          </li>
-          <li>
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-            Подберём мастера и время, если пока не решили
-          </li>
-          <li>
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-            Назовём точную цену до визита, без предоплаты
-          </li>
-        </ul>
-
-        <!-- Вариант текста, когда в SITE_CONFIG задан bookingUrl -->
-        <ul class="side-list" data-mode="online" hidden>
+        <h2 id="bk-h">Выберите удобное время</h2>
+        <ul class="side-list">
           <li>
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
             Живое расписание — свободные окна видно прямо сейчас
@@ -1577,7 +1498,7 @@ section[id],#top{scroll-margin-top:98px}
           </li>
           <li>
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-            Нет подходящего окна — оставьте заявку, перезвоним
+            Оплата после работы, предоплату не берём
           </li>
         </ul>
         <div class="photo-slot" role="img" aria-label="Фотография зоны ожидания в салоне Мадонна">
@@ -1587,138 +1508,62 @@ section[id],#top{scroll-margin-top:98px}
       </div>
 
       <div class="rv">
-        <div class="book-online" id="bookOnline">
-          <a class="btn btn-primary" id="bookOnlineLink" href="#" target="_blank" rel="noopener">
-            Выбрать время онлайн
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+        <div class="book-card">
+          <a class="btn btn-primary btn-block" id="bookOnlineLink" href="#contacts" target="_blank" rel="noopener">
+            Записаться онлайн
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
           </a>
-          <p class="bo-note">Реальное расписание мастеров — запись подтвердится сразу</p>
+          <p class="bo-note">Откроется расписание мастеров — запись подтвердится сразу</p>
+
+          <p class="book-or"><span>или напишите нам</span></p>
+
+          <ul class="ways">
+            <li>
+              <a href="https://t.me/madonna_beauty_kotelniki" target="_blank" rel="noopener">
+                <span class="way-ico" aria-hidden="true">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21.5 4.5L2.5 11.5l6 2 2.5 6.5 3-5 5 4z"/></svg>
+                </span>
+                <span class="way-txt">
+                  <b>Telegram</b>
+                  <small>Пришлите фото желаемого результата — подскажем, что получится</small>
+                </span>
+                <span class="way-go" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18l6-6-6-6"/></svg>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="tel:+79256993999">
+                <span class="way-ico" aria-hidden="true">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+                </span>
+                <span class="way-txt">
+                  <b>+7 (925) 699-39-99</b>
+                  <small>Ответит администратор Анаит и подберёт время</small>
+                </span>
+                <span class="way-go" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18l6-6-6-6"/></svg>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="https://yandex.ru/maps/org/madonna/155030243880/" target="_blank" rel="noopener">
+                <span class="way-ico" aria-hidden="true">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </span>
+                <span class="way-txt">
+                  <b>Яндекс.Карты</b>
+                  <small>144 отзыва, фото работ и маршрут от метро Котельники</small>
+                </span>
+                <span class="way-go" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18l6-6-6-6"/></svg>
+                </span>
+              </a>
+            </li>
+          </ul>
+
+          <p class="book-foot">Ежедневно до 22:00 · ул. Лётчика Ларюшина, 10, 1 этаж</p>
         </div>
-        <p class="book-or" id="bookOr"><span>или</span></p>
-
-        <button type="button" class="form-toggle" id="formToggle" aria-expanded="true" aria-controls="formWrap" hidden>
-          <span>Не нашли удобное время? Оставьте заявку — перезвоним</span>
-          <span class="chev" aria-hidden="true"><svg width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1.5l5 5 5-5"/></svg></span>
-        </button>
-
-        <div id="formWrap">
-        <form class="form" id="bookForm" novalidate>
-          <div class="f-row">
-            <div class="field" id="f-name">
-              <label for="in-name">Имя <span class="req" aria-hidden="true">*</span></label>
-              <input type="text" id="in-name" name="name" autocomplete="given-name" placeholder="Как к вам обращаться" aria-describedby="e-name">
-              <span class="err-msg" id="e-name" role="alert"></span>
-            </div>
-
-            <div class="field" id="f-phone">
-              <label for="in-phone">Телефон <span class="req" aria-hidden="true">*</span></label>
-              <input type="tel" id="in-phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" aria-describedby="e-phone">
-              <span class="err-msg" id="e-phone" role="alert"></span>
-            </div>
-          </div>
-
-          <div class="field">
-            <span class="chips-label" id="chips-lbl">Частые запросы</span>
-            <div class="chips" role="group" aria-labelledby="chips-lbl">
-              <button type="button" class="chip" aria-pressed="false" data-svc="Маникюр классический">Маникюр</button>
-              <button type="button" class="chip" aria-pressed="false" data-svc="Педикюр классический">Педикюр</button>
-              <button type="button" class="chip" aria-pressed="false" data-svc="Окрашивание в один тон">Окрашивание</button>
-              <button type="button" class="chip" aria-pressed="false" data-svc="Женская стрижка">Стрижка</button>
-              <button type="button" class="chip" aria-pressed="false" data-svc="Архитектура бровей">Брови</button>
-              <button type="button" class="chip" aria-pressed="false" data-svc="Солярий">Солярий</button>
-            </div>
-          </div>
-
-          <div class="f-row">
-            <div class="field" id="f-service">
-              <label for="in-service">Услуга <span class="req" aria-hidden="true">*</span></label>
-              <select id="in-service" name="service" aria-describedby="e-service">
-                <option value="">Выберите услугу</option>
-                <option>Маникюр классический</option>
-                <option>Педикюр классический</option>
-                <option>Комбо: маникюр + педикюр + покрытие</option>
-                <option>Женская стрижка</option>
-                <option>Окрашивание в один тон</option>
-                <option>Укладка</option>
-                <option>Кератиновое выпрямление</option>
-                <option>Ламинирование волос</option>
-                <option>Архитектура бровей</option>
-                <option>Ресницы / ламинирование ресниц</option>
-                <option>Дневной макияж</option>
-                <option>Перманентный макияж губ</option>
-                <option>Лазерная эпиляция</option>
-                <option>Косметология, липолитики</option>
-                <option>Солярий</option>
-                <option>Пока не решила — подскажите</option>
-              </select>
-              <span class="err-msg" id="e-service" role="alert"></span>
-            </div>
-
-            <div class="field" id="f-master">
-              <label for="in-master">Мастер</label>
-              <select id="in-master" name="master">
-                <option>Любой свободный</option>
-                <option>Марина — колорист-стилист</option>
-                <option>Жанна — маникюр и педикюр</option>
-                <option>Тамара — педикюр</option>
-                <option>Владислава — маникюр</option>
-                <option>Ксения — брови</option>
-                <option>Лолита — косметолог</option>
-                <option>Мадонна — лазерная эпиляция</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="field" id="f-date">
-            <label for="in-date">Удобная дата</label>
-            <input type="date" id="in-date" name="date" aria-describedby="e-date">
-            <span class="err-msg" id="e-date" role="alert"></span>
-          </div>
-
-          <div class="field">
-            <label for="in-note">Комментарий</label>
-            <textarea id="in-note" name="note" placeholder="Например: хочу тёплый блонд, есть фото; удобнее после 19:00"></textarea>
-          </div>
-
-          <label class="consent" id="f-consent" for="in-consent">
-            <input type="checkbox" id="in-consent" name="consent">
-            <span>Согласна на обработку персональных данных и <button type="button" class="js-privacy" style="background:none;border:0;padding:0;color:var(--gold-deep);text-decoration:underline;text-underline-offset:2px;cursor:pointer;font:inherit">политику конфиденциальности</button></span>
-          </label>
-
-          <button type="submit" class="btn btn-primary btn-block">Записаться</button>
-
-          <div class="form-alt">
-            <a class="btn btn-ghost" href="https://t.me/madonna_beauty_kotelniki" target="_blank" rel="noopener">Написать в Telegram</a>
-            <a class="btn btn-ghost" href="tel:+79256993999">Позвонить</a>
-          </div>
-
-          <p class="form-hint">Заявка ни к чему не обязывает — сначала обсудим детали и цену.</p>
-        </form>
-
-        <div class="form thanks" id="thanks" role="status" aria-live="polite">
-          <div class="tk-ico" aria-hidden="true">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6L9 17l-5-5"/></svg>
-          </div>
-          <h3>Заявка принята</h3>
-          <p>Спасибо! Анаит перезвонит с ближайшего свободного окна и подтвердит время.</p>
-          <ul class="tk-sum" id="tkSum"></ul>
-          <button class="btn btn-ghost" id="tkBack" type="button">Оставить ещё одну заявку</button>
-        </div>
-
-        <div class="form thanks" id="sendfail" role="alert" aria-live="assertive">
-          <div class="tk-ico fail" aria-hidden="true">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 8v5"/><path d="M12 16.5v.5"/><circle cx="12" cy="12" r="9"/></svg>
-          </div>
-          <h3>Заявка не ушла</h3>
-          <p>Связь с сервером записи не удалась, и мы не хотим обещать лишнего. Позвоните или напишите — ответим сразу и запишем вручную.</p>
-          <ul class="tk-sum" id="failSum"></ul>
-          <div class="form-alt" style="justify-content:center">
-            <a class="btn btn-primary" href="tel:+79256993999">Позвонить</a>
-            <a class="btn btn-ghost" href="https://t.me/madonna_beauty_kotelniki" target="_blank" rel="noopener">Написать в Telegram</a>
-          </div>
-          <p class="form-hint"><button type="button" id="failBack" style="background:none;border:0;padding:0;color:var(--gold-deep);text-decoration:underline;text-underline-offset:2px;cursor:pointer;font:inherit">Вернуться к форме и попробовать ещё раз</button></p>
-        </div>
-        </div><!-- /#formWrap -->
       </div>
 
     </div>
@@ -1829,7 +1674,7 @@ section[id],#top{scroll-margin-top:98px}
 
     <div class="ftr-bot">
       <span>© 2026 Салон красоты «Мадонна» · Madonna Beauty, Котельники</span>
-      <button type="button" class="js-privacy">Политика обработки персональных данных</button>
+      <button type="button" class="js-privacy">Обработка данных и cookie</button>
     </div>
   </div>
 </footer>
@@ -1869,11 +1714,11 @@ section[id],#top{scroll-margin-top:98px}
     <button class="modal-close" id="pvClose" aria-label="Закрыть окно">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
     </button>
-    <h3 id="pv-h">Политика обработки персональных данных</h3>
-    <p>Салон красоты «Мадонна» (Московская обл., г. Люберцы, ул. Лётчика Ларюшина, 10) обрабатывает данные, которые вы оставляете в форме записи: имя, номер телефона, выбранную услугу, мастера, дату и комментарий.</p>
-    <p>Данные нужны только для того, чтобы перезвонить, подтвердить запись и напомнить о визите. Мы не передаём их третьим лицам и не используем для рассылок без вашего отдельного согласия.</p>
-    <p>Отозвать согласие можно в любой момент — позвоните по <a href="tel:+79256993999" style="color:var(--gold-deep)">+7 (925) 699-39-99</a> или напишите в <a href="https://t.me/madonna_beauty_kotelniki" target="_blank" rel="noopener" style="color:var(--gold-deep)">Telegram</a>, и мы удалим вашу заявку.</p>
-    <p style="font-size:13.5px;opacity:.8">Это шаблонный текст-заглушка. Замените его на согласованную юристом редакцию политики до запуска сайта.</p>
+    <h3 id="pv-h">Обработка данных и cookie</h3>
+    <p>Этот сайт не собирает персональные данные: здесь нет форм, полей и заявок. Записаться можно по ссылке на Яндекс.Картах, в Telegram или по телефону — и все данные вы оставляете уже там, по правилам этих сервисов.</p>
+    <p>Сайт может использовать Яндекс.Метрику для обезличенной статистики посещений: какие разделы смотрят и с каких устройств заходят. Эти данные не позволяют вас опознать. Отключить сбор можно в настройках браузера, запретив cookie.</p>
+    <p>Вопросы по обработке данных — по телефону <a href="tel:+79256993999" style="color:var(--gold-deep)">+7 (925) 699-39-99</a> или в <a href="https://t.me/madonna_beauty_kotelniki" target="_blank" rel="noopener" style="color:var(--gold-deep)">Telegram</a>.</p>
+    <p style="font-size:13.5px;opacity:.8">Текст носит информационный характер. Если вы подключите Метрику или другие счётчики, покажите эту страницу юристу.</p>
   </div>
 </div>
 
@@ -1882,26 +1727,17 @@ section[id],#top{scroll-margin-top:98px}
   'use strict';
 
   /* ==================================================================
-     НАСТРОЙКИ САЙТА — единственное место, где нужно что-то вписать.
-     ==================================================================
+     НАСТРОЙКИ САЙТА — единственное место, где нужно что-то менять.
 
-     formEndpoint — куда уходит заявка из формы записи.
-       Пока строка пустая, форма честно говорит человеку «не отправилось,
-       позвоните» и НЕ делает вид, что запись принята.
-       Вписать сюда URL форм-сервиса (например https://formspree.io/f/xxxxxxx)
-       или адрес своего прокси. См. комментарий у функции submitBooking ниже.
-
-     bookingUrl — ссылка на онлайн-запись салона в YCLIENTS.
-       Если её заполнить, в блоке записи автоматически появится кнопка
-       «Выбрать время онлайн» — человек попадёт в реальное расписание
-       мастеров, а заявка сразу окажется в CRM салона.
-       Где взять: в личном кабинете YCLIENTS → «Онлайн-запись» → «Ссылка
-       на виджет»; либо скопировать адрес, который открывает кнопка
-       «Записаться» в карточке салона на Яндекс.Картах.
+     bookingUrl — ссылка на онлайн-запись салона.
+       Сюда ведут ВСЕ кнопки «Записаться» на странице, поэтому адрес
+       достаточно поменять здесь одной строкой.
+       Сейчас это карточка салона на Яндекс.Картах с параметром
+       booking[page]=menu — она открывает расписание мастеров (YCLIENTS).
+       Если появится прямая ссылка на виджет YCLIENTS, вписать её сюда же.
      ================================================================== */
   var SITE_CONFIG = {
-    formEndpoint: '',
-    bookingUrl:   'https://yandex.ru/maps/org/madonna/155030243880/reviews/?booking%5Bpage%5D=menu&booking%5Bpermalink%5D=155030243880&ll=37.867960%2C55.679611&z=16'
+    bookingUrl: 'https://yandex.ru/maps/org/madonna/155030243880/reviews/?booking%5Bpage%5D=menu&booking%5Bpermalink%5D=155030243880&ll=37.867960%2C55.679611&z=16'
   };
 
   var $  = function(s,c){ return (c||document).querySelector(s); };
@@ -2098,37 +1934,7 @@ section[id],#top{scroll-margin-top:98px}
     if (e.key === 'ArrowRight') stepLb(1);
   });
 
-  /* ---------- ЗАПИСЬ К КОНКРЕТНОМУ МАСТЕРУ ---------- */
-  var selMaster = $('#in-master');
-  $$('.js-book').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var name = btn.getAttribute('data-master');
-      Array.prototype.forEach.call(selMaster.options, function(o){
-        if (o.text.indexOf(name) === 0) selMaster.value = o.value;
-      });
-      document.getElementById('booking').scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block:'start'});
-      setTimeout(function(){ $('#in-name').focus({preventScroll:true}); }, reduced ? 0 : 600);
-    });
-  });
-
-  /* ---------- ЧИПЫ БЫСТРОГО ВЫБОРА УСЛУГИ ---------- */
-  var svcSelect = $('#in-service');
-  var chips = $$('.chip');
-  function syncChips(){
-    chips.forEach(function(c){
-      c.setAttribute('aria-pressed', c.getAttribute('data-svc') === svcSelect.value ? 'true' : 'false');
-    });
-  }
-  chips.forEach(function(c){
-    c.addEventListener('click', function(){
-      svcSelect.value = c.getAttribute('data-svc');
-      syncChips();
-      setError('f-service','e-service','');
-    });
-  });
-  svcSelect.addEventListener('change', syncChips);
-
-  /* ---------- ЛИПКАЯ ПАНЕЛЬ: прячем, когда форма на экране ---------- */
+  /* ---------- ЛИПКАЯ ПАНЕЛЬ: прячем, когда блок записи на экране ---------- */
   var mcta = $('#mcta');
   if ('IntersectionObserver' in window){
     new IntersectionObserver(function(entries){
@@ -2154,246 +1960,21 @@ section[id],#top{scroll-margin-top:98px}
     sections.forEach(function(s){ spy.observe(s); });
   }
 
-  /* ---------- МАСКА ТЕЛЕФОНА +7 (___) ___-__-__ ---------- */
-  var phone = $('#in-phone');
-  function formatPhone(digits){
-    // digits — только цифры «национального» номера (10 знаков)
-    var out = '+7';
-    if (digits.length > 0) out += ' (' + digits.substring(0,3);
-    if (digits.length >= 3) out += ')';
-    if (digits.length > 3) out += ' ' + digits.substring(3,6);
-    if (digits.length > 6) out += '-' + digits.substring(6,8);
-    if (digits.length > 8) out += '-' + digits.substring(8,10);
-    return out;
-  }
-  function extractDigits(value){
-    var d = value.replace(/\D/g,'');
-    if (d.charAt(0) === '8') d = '7' + d.substring(1);
-    if (d.charAt(0) === '7') d = d.substring(1);
-    return d.substring(0,10);
-  }
-  function applyMask(){
-    var d = extractDigits(phone.value);
-    phone.value = d.length ? formatPhone(d) : '';
-  }
-  phone.addEventListener('input', applyMask);
-  phone.addEventListener('focus', function(){ if (!phone.value) phone.value = '+7 ('; });
-  phone.addEventListener('blur',  function(){ if (extractDigits(phone.value).length === 0) phone.value = ''; });
-  phone.addEventListener('paste', function(){ setTimeout(applyMask, 0); });
-
-  /* ---------- ВАЛИДАЦИЯ И ОТПРАВКА ---------- */
-  var form = $('#bookForm'), thanks = $('#thanks'), sendfail = $('#sendfail');
-  var dateInput = $('#in-date');
-
   /* ------------------------------------------------------------------
-     РЕЖИМ ОНЛАЙН-ЗАПИСИ.
-     Если в SITE_CONFIG задан bookingUrl, сайт сам перестраивается:
-     все кнопки «Записаться» ведут прямо в расписание YCLIENTS,
-     а форма уезжает под свёрнутый блок как запасной канал.
-     Если ссылки нет — всё работает по-старому, через форму.
+     ССЫЛКИ НА ОНЛАЙН-ЗАПИСЬ.
+     Все кнопки «Записаться» в разметке ведут на #booking — это рабочий
+     запасной вариант, если скрипт почему-то не выполнится: человек
+     просто попадёт в блок со всеми контактами.
+     Здесь они разом переписываются на адрес из SITE_CONFIG.bookingUrl,
+     поэтому менять ссылку нужно ровно в одном месте, в начале скрипта.
      ------------------------------------------------------------------ */
-  var formWrap = $('#formWrap'), formToggle = $('#formToggle');
-
   if (SITE_CONFIG.bookingUrl){
-    $('#bookOnlineLink').href = SITE_CONFIG.bookingUrl;
-    $('#bookOnline').classList.add('on');
-    $('#bookOr').classList.add('on');
-
-    /* заголовок и список преимуществ — в онлайн-варианте */
-    var bkH = $('#bk-h');
-    bkH.textContent = bkH.getAttribute('data-online-title');
-    $('.side-list[data-mode="form"]').hidden = true;
-    $('.side-list[data-mode="online"]').hidden = false;
-
-    /* все ссылки «Записаться» ведут в расписание, а не к форме */
-    $$('a[href="#booking"]').forEach(function(a){
+    $$('#bookOnlineLink, a[href="#booking"]').forEach(function(a){
       a.href = SITE_CONFIG.bookingUrl;
       a.target = '_blank';
       a.rel = 'noopener';
     });
-
-    /* кнопки «Записаться к мастеру» — туда же */
-    $$('.js-book').forEach(function(b){
-      var link = document.createElement('a');
-      link.className = b.className.replace('js-book','').replace(/\s+/g,' ').trim();
-      link.href = SITE_CONFIG.bookingUrl;
-      link.target = '_blank';
-      link.rel = 'noopener';
-      link.textContent = b.textContent;
-      b.parentNode.replaceChild(link, b);
-    });
-
-    /* форма сворачивается в запасной канал */
-    formToggle.hidden = false;
-    formToggle.setAttribute('aria-expanded','false');
-    formWrap.hidden = true;
   }
-
-  formToggle.addEventListener('click', function(){
-    var open = formToggle.getAttribute('aria-expanded') === 'true';
-    formToggle.setAttribute('aria-expanded', open ? 'false' : 'true');
-    formWrap.hidden = open;
-  });
-  // минимальная дата — сегодня
-  (function(){
-    var t = new Date();
-    var iso = t.getFullYear() + '-' + String(t.getMonth()+1).padStart(2,'0') + '-' + String(t.getDate()).padStart(2,'0');
-    dateInput.min = iso;
-  })();
-
-  function setError(fieldId, msgId, message){
-    var f = document.getElementById(fieldId);
-    var m = document.getElementById(msgId);
-    if (message){ f.classList.add('err'); if (m) m.textContent = message; }
-    else { f.classList.remove('err'); if (m) m.textContent = ''; }
-    return !message;
-  }
-
-  function validate(){
-    var ok = true, firstBad = null;
-
-    var name = $('#in-name').value.trim();
-    if (name.length < 2){
-      ok = setError('f-name','e-name','Напишите, как к вам обращаться — хотя бы 2 буквы') && ok;
-      firstBad = firstBad || $('#in-name');
-    } else setError('f-name','e-name','');
-
-    var digits = extractDigits(phone.value);
-    if (digits.length !== 10){
-      ok = setError('f-phone','e-phone','Нужен полный номер: +7 и 10 цифр') && ok;
-      firstBad = firstBad || phone;
-    } else setError('f-phone','e-phone','');
-
-    if (!$('#in-service').value){
-      ok = setError('f-service','e-service','Выберите услугу — или пункт «Пока не решила»') && ok;
-      firstBad = firstBad || $('#in-service');
-    } else setError('f-service','e-service','');
-
-    if (dateInput.value){
-      var today = new Date(); today.setHours(0,0,0,0);
-      var picked = new Date(dateInput.value + 'T00:00:00');
-      if (isNaN(picked.getTime()) || picked < today){
-        ok = setError('f-date','e-date','Выберите сегодняшнюю или будущую дату') && ok;
-        firstBad = firstBad || dateInput;
-      } else setError('f-date','e-date','');
-    } else setError('f-date','e-date','');
-
-    var consentWrap = $('#f-consent');
-    if (!$('#in-consent').checked){
-      consentWrap.classList.add('err'); ok = false;
-      firstBad = firstBad || $('#in-consent');
-    } else consentWrap.classList.remove('err');
-
-    if (firstBad) firstBad.focus();
-    return ok;
-  }
-
-  /**
-   * submitBooking(data) — отправка заявки.
-   * ------------------------------------------------------------------
-   * Адрес приёмника берётся из SITE_CONFIG.formEndpoint в начале скрипта.
-   * Пока он пустой, форма НЕ показывает «заявка принята»: вместо этого
-   * человек видит честный экран «не отправилось» с телефоном и Telegram.
-   * Так ни одна заявка не пропадает молча.
-   *
-   * Вариант 1 — форм-сервис без своего сервера (Formspree, Getform, FormSubmit):
-   *   зарегистрироваться, получить URL вида https://formspree.io/f/xxxxxxx
-   *   и вписать его в SITE_CONFIG.formEndpoint. Заявки приходят на почту.
-   *
-   * Вариант 2 — Telegram-бот: токен НЕЛЬЗЯ класть в этот файл, он публичный.
-   *   Нужен маленький прокси (Cloudflare Worker и подобное), который примет
-   *   POST и сам дёрнет Bot API sendMessage. В formEndpoint — адрес прокси.
-   *
-   * Вариант 3 — YCLIENTS: у салона он уже есть. Через API записи нужен
-   *   партнёрский токен и сервер; проще вести людей в готовый виджет —
-   *   см. SITE_CONFIG.bookingUrl.
-   * ------------------------------------------------------------------
-   */
-  function submitBooking(data){
-    if (!SITE_CONFIG.formEndpoint){
-      console.warn(
-        'Форма не подключена: SITE_CONFIG.formEndpoint пустой. Заявка НЕ отправлена.\n' +
-        'Данные заявки:', data
-      );
-      return Promise.reject(new Error('not-configured'));
-    }
-    return fetch(SITE_CONFIG.formEndpoint, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-      body: JSON.stringify(data)
-    }).then(function(r){
-      if (!r.ok) throw new Error('Ошибка отправки: HTTP ' + r.status);
-      return true;
-    });
-  }
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    if (!validate()) return;
-
-    var data = {
-      name:    $('#in-name').value.trim(),
-      phone:   '+7' + extractDigits(phone.value),
-      service: $('#in-service').value,
-      master:  selMaster.value,
-      date:    dateInput.value || 'не указана',
-      note:    $('#in-note').value.trim(),
-      /* только адрес страницы, без query и хвостов — чтобы не тащить лишнее */
-      page:    (location.origin + location.pathname).slice(0, 200),
-      sentAt:  new Date().toISOString()
-    };
-
-    var btn = form.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    btn.textContent = 'Отправляем…';
-
-    function fillSummary(listEl){
-      listEl.innerHTML = '';
-      [['Имя', data.name],
-       ['Телефон', data.phone],
-       ['Услуга', data.service],
-       ['Мастер', data.master],
-       ['Дата', data.date]].forEach(function(pair){
-        var li = document.createElement('li');
-        var s = document.createElement('span'); s.textContent = pair[0];
-        var b = document.createElement('b');    b.textContent = pair[1];
-        li.appendChild(s); li.appendChild(b);
-        listEl.appendChild(li);
-      });
-    }
-
-    submitBooking(data).then(function(){
-      fillSummary($('#tkSum'));
-      form.style.display = 'none';
-      thanks.classList.add('show');
-      thanks.scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block:'center'});
-    }).catch(function(){
-      /* Ничего не отправилось — говорим об этом прямо, а не рисуем «принято» */
-      fillSummary($('#failSum'));
-      form.style.display = 'none';
-      sendfail.classList.add('show');
-      sendfail.scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block:'center'});
-    }).then(function(){
-      btn.disabled = false;
-      btn.textContent = 'Записаться';
-    });
-  });
-
-  $('#failBack').addEventListener('click', function(){
-    sendfail.classList.remove('show');
-    form.style.display = '';
-    $('#in-name').focus();
-  });
-
-  $('#tkBack').addEventListener('click', function(){
-    form.reset();
-    syncChips();
-    $$('.field').forEach(function(f){ f.classList.remove('err'); });
-    $('#f-consent').classList.remove('err');
-    thanks.classList.remove('show');
-    form.style.display = '';
-    $('#in-name').focus();
-  });
 
 })();
 </script>
