@@ -594,7 +594,19 @@ section[id],#top{scroll-margin-top:98px}
 /* кнопка онлайн-записи в YCLIENTS — появляется, только если задан bookingUrl */
 .book-online{display:none;margin-bottom:22px}
 .book-online.on{display:block}
-.book-online .btn{width:100%}
+.book-online .btn{width:100%;padding:19px 30px;font-size:16px}
+
+/* переключатель формы-запасного канала (виден только в режиме онлайн-записи) */
+.form-toggle{
+  width:100%;background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:17px 22px;cursor:pointer;text-align:left;font-size:15px;color:var(--ink);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  transition:border-color .2s var(--ease);
+}
+.form-toggle:hover{border-color:var(--gold)}
+.form-toggle .chev{color:var(--gold);display:flex;flex:none;transition:transform .3s var(--ease)}
+.form-toggle[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.form-toggle[aria-expanded="true"]{margin-bottom:18px}
 .book-online .bo-note{
   font-size:13.5px;color:var(--muted);text-align:center;margin-top:10px;line-height:1.5;
 }
@@ -1498,7 +1510,7 @@ section[id],#top{scroll-margin-top:98px}
       <div class="faq rv">
         <article class="faq-item">
           <h3><button class="faq-q" aria-expanded="false" aria-controls="faq-a1">Как записаться и можно ли прийти сегодня?<span class="pm" aria-hidden="true"></span></button></h3>
-          <div class="faq-a" id="faq-a1"><p>Заполните форму ниже, позвоните по <a href="tel:+79256993999">+7 (925) 699-39-99</a> или напишите в <a href="https://t.me/madonna_beauty_kotelniki" target="_blank" rel="noopener">Telegram</a>. Сегодня — часто да: окна появляются в течение дня, особенно вечером. Позвоните, Анаит посмотрит расписание прямо при вас.</p></div>
+          <div class="faq-a" id="faq-a1"><p>Запишитесь онлайн в блоке записи на этой странице, позвоните по <a href="tel:+79256993999">+7 (925) 699-39-99</a> или напишите в <a href="https://t.me/madonna_beauty_kotelniki" target="_blank" rel="noopener">Telegram</a>. Сегодня — часто да: окна появляются в течение дня, особенно вечером. Позвоните, Анаит посмотрит расписание прямо при вас.</p></div>
         </article>
 
         <article class="faq-item">
@@ -1535,8 +1547,10 @@ section[id],#top{scroll-margin-top:98px}
 
       <div class="book-side rv">
         <p class="eyebrow">Запись</p>
-        <h2 id="bk-h">Оставьте заявку — перезвоним</h2>
-        <ul class="side-list">
+        <h2 id="bk-h" data-online-title="Выберите удобное время">Оставьте заявку — перезвоним</h2>
+
+        <!-- Вариант текста, когда онлайн-запись ещё не подключена -->
+        <ul class="side-list" data-mode="form">
           <li>
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
             Перезваниваем в рабочие часы, обычно в течение 15 минут
@@ -1548,6 +1562,22 @@ section[id],#top{scroll-margin-top:98px}
           <li>
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
             Назовём точную цену до визита, без предоплаты
+          </li>
+        </ul>
+
+        <!-- Вариант текста, когда в SITE_CONFIG задан bookingUrl -->
+        <ul class="side-list" data-mode="online" hidden>
+          <li>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            Живое расписание — свободные окна видно прямо сейчас
+          </li>
+          <li>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            Выбираете мастера и время сами, подтверждение сразу
+          </li>
+          <li>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            Нет подходящего окна — оставьте заявку, перезвоним
           </li>
         </ul>
         <div class="photo-slot" role="img" aria-label="Фотография зоны ожидания в салоне Мадонна">
@@ -1564,8 +1594,14 @@ section[id],#top{scroll-margin-top:98px}
           </a>
           <p class="bo-note">Реальное расписание мастеров — запись подтвердится сразу</p>
         </div>
-        <p class="book-or" id="bookOr"><span>или оставьте заявку</span></p>
+        <p class="book-or" id="bookOr"><span>или</span></p>
 
+        <button type="button" class="form-toggle" id="formToggle" aria-expanded="true" aria-controls="formWrap" hidden>
+          <span>Не нашли удобное время? Оставьте заявку — перезвоним</span>
+          <span class="chev" aria-hidden="true"><svg width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1.5l5 5 5-5"/></svg></span>
+        </button>
+
+        <div id="formWrap">
         <form class="form" id="bookForm" novalidate>
           <div class="f-row">
             <div class="field" id="f-name">
@@ -1682,6 +1718,7 @@ section[id],#top{scroll-margin-top:98px}
           </div>
           <p class="form-hint"><button type="button" id="failBack" style="background:none;border:0;padding:0;color:var(--gold-deep);text-decoration:underline;text-underline-offset:2px;cursor:pointer;font:inherit">Вернуться к форме и попробовать ещё раз</button></p>
         </div>
+        </div><!-- /#formWrap -->
       </div>
 
     </div>
@@ -2148,12 +2185,55 @@ section[id],#top{scroll-margin-top:98px}
   var form = $('#bookForm'), thanks = $('#thanks'), sendfail = $('#sendfail');
   var dateInput = $('#in-date');
 
-  /* Кнопка онлайн-записи включается сама, если в SITE_CONFIG задан bookingUrl */
+  /* ------------------------------------------------------------------
+     РЕЖИМ ОНЛАЙН-ЗАПИСИ.
+     Если в SITE_CONFIG задан bookingUrl, сайт сам перестраивается:
+     все кнопки «Записаться» ведут прямо в расписание YCLIENTS,
+     а форма уезжает под свёрнутый блок как запасной канал.
+     Если ссылки нет — всё работает по-старому, через форму.
+     ------------------------------------------------------------------ */
+  var formWrap = $('#formWrap'), formToggle = $('#formToggle');
+
   if (SITE_CONFIG.bookingUrl){
     $('#bookOnlineLink').href = SITE_CONFIG.bookingUrl;
     $('#bookOnline').classList.add('on');
     $('#bookOr').classList.add('on');
+
+    /* заголовок и список преимуществ — в онлайн-варианте */
+    var bkH = $('#bk-h');
+    bkH.textContent = bkH.getAttribute('data-online-title');
+    $('.side-list[data-mode="form"]').hidden = true;
+    $('.side-list[data-mode="online"]').hidden = false;
+
+    /* все ссылки «Записаться» ведут в расписание, а не к форме */
+    $$('a[href="#booking"]').forEach(function(a){
+      a.href = SITE_CONFIG.bookingUrl;
+      a.target = '_blank';
+      a.rel = 'noopener';
+    });
+
+    /* кнопки «Записаться к мастеру» — туда же */
+    $$('.js-book').forEach(function(b){
+      var link = document.createElement('a');
+      link.className = b.className.replace('js-book','').replace(/\s+/g,' ').trim();
+      link.href = SITE_CONFIG.bookingUrl;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.textContent = b.textContent;
+      b.parentNode.replaceChild(link, b);
+    });
+
+    /* форма сворачивается в запасной канал */
+    formToggle.hidden = false;
+    formToggle.setAttribute('aria-expanded','false');
+    formWrap.hidden = true;
   }
+
+  formToggle.addEventListener('click', function(){
+    var open = formToggle.getAttribute('aria-expanded') === 'true';
+    formToggle.setAttribute('aria-expanded', open ? 'false' : 'true');
+    formWrap.hidden = open;
+  });
   // минимальная дата — сегодня
   (function(){
     var t = new Date();
