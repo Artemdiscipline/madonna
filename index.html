@@ -371,7 +371,7 @@ section[id],#top{scroll-margin-top:98px}
   transition:transform .3s var(--ease),box-shadow .3s var(--ease);
 }
 .svc:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift)}
-.svc .photo-slot{border:0;border-radius:0;border-bottom:1px solid var(--gold);aspect-ratio:3/2}
+.svc .photo-slot{border:0;border-radius:0;border-bottom:1px solid var(--gold);aspect-ratio:4/5}
 .svc .photo-slot::before{inset:12px}
 .svc-body{padding:28px 28px 26px;display:flex;flex-direction:column;flex:1}
 .svc h3{margin-bottom:16px}
@@ -478,7 +478,7 @@ section[id],#top{scroll-margin-top:98px}
   transition:transform .3s var(--ease),box-shadow .3s var(--ease);
 }
 .gal button:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift)}
-.gal .photo-slot{border-radius:var(--radius-sm);aspect-ratio:1/1;padding:18px 12px}
+.gal .photo-slot{border-radius:var(--radius-sm);aspect-ratio:4/5;padding:18px 12px}
 .gal .ps-label{font-size:11px;max-width:170px}
 
 /* lightbox */
@@ -1852,15 +1852,17 @@ section[id],#top{scroll-margin-top:98px}
   /* ---------- ГАЛЕРЕЯ + ЛАЙТБОКС ---------- */
   /* Галерея работ. Чтобы добавить или убрать снимок — правьте только этот
      массив: файл кладётся в папку photos/, подпись видна в лайтбоксе. */
+  /* Только работы мастеров — без интерьера и вывесок.
+     Чтобы добавить снимок: файл в папку photos/, строка сюда. */
   var GALLERY = [
-    {src:'lounge.webp',         cap:'Зона ожидания: кресла, живые цветы и вывеска салона'},
-    {src:'styling-station.webp',cap:'Парикмахерское место у мраморной стены'},
     {src:'haircut.webp',        cap:'Женская стрижка на длинные волосы'},
     {src:'hair-blonde.webp',    cap:'Окрашивание в блонд'},
-    {src:'pedicure.webp',       cap:'Педикюр с французским покрытием'},
+    {src:'hair-waves.webp',     cap:'Голливудские локоны'},
+    {src:'hair-styling.webp',   cap:'Укладка на длинные волосы'},
+    {src:'manicure-pink.webp',  cap:'Маникюр в нюдовом оттенке'},
     {src:'manicure-pearl.webp', cap:'Маникюр с перламутровым покрытием'},
-    {src:'reception.webp',      cap:'Ресепшн и вывеска Madonna Beauty Studio'},
-    {src:'entrance.webp',       cap:'Вход в салон, знак Яндекса «Хорошее место 2026»'}
+    {src:'pedicure.webp',       cap:'Педикюр с французским покрытием'},
+    {src:'makeup-face.webp',    cap:'Вечерний макияж'}
   ];
 
   var galEl = $('#gal');

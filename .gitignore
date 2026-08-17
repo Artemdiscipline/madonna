@@ -11,3 +11,6 @@ desktop.ini
 
 # Прочее
 *.log
+
+# Локальный запуск через Claude Code
+.claude/
