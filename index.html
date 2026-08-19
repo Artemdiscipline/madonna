@@ -338,7 +338,7 @@ section[id],#top{scroll-margin-top:98px}
 }
 .trust span{display:block;font-size:13px;color:var(--muted);margin-top:5px;line-height:1.4}
 .hero-photo{position:relative}
-.hero-photo .photo-slot{min-height:460px}
+.hero-photo .photo-slot{aspect-ratio:4/5}
 .hero-badge{
   position:absolute;left:-26px;bottom:34px;background:var(--surface);
   border:1px solid var(--line);border-radius:var(--radius-sm);box-shadow:var(--shadow-lift);
@@ -703,7 +703,7 @@ section[id],#top{scroll-margin-top:98px}
   .nav{gap:20px}
   .nav a{font-size:14px}
   .hero-grid{gap:44px}
-  .hero-photo .photo-slot{min-height:440px}
+
   .gal{grid-template-columns:repeat(3,1fr)}
 }
 /* Между 900 и 1080 меню, телефон и кнопка перестают помещаться в строку —
@@ -728,7 +728,7 @@ section[id],#top{scroll-margin-top:98px}
   .logo{margin-right:auto}
   .hero-grid{grid-template-columns:1fr;gap:44px}
   .hero-sub{max-width:none}
-  .hero-photo .photo-slot{min-height:340px}
+
   .hero-badge{left:auto;right:20px;bottom:-20px}
   .award{top:-16px;right:8px;width:98px;height:98px}
   .aw-y{font-size:16px}
@@ -997,7 +997,7 @@ section[id],#top{scroll-margin-top:98px}
 
         <!-- Волосы -->
         <article class="svc rv">
-          <div class="photo-slot has-photo" role="img" aria-label="Фотография результата окрашивания волос в салоне Мадонна"><img src="photos/hair-keratin.webp" alt="Длинные гладкие волосы после кератинового выпрямления в салоне «Мадонна»" style="object-position:center 20%" loading="lazy" decoding="async"></div>
+          <div class="photo-slot has-photo" role="img" aria-label="Фотография результата окрашивания волос в салоне Мадонна"><img src="photos/hair-keratin.webp" alt="Длинные гладкие волосы после кератинового выпрямления в салоне «Мадонна»" loading="lazy" decoding="async"></div>
           <div class="svc-body">
             <h3>Волосы</h3>
             <ul class="svc-list">
@@ -1861,19 +1861,19 @@ section[id],#top{scroll-margin-top:98px}
      иначе ряд выглядит однообразно. Добавляете снимок — вставляйте его
      между работами другого направления. */
   var GALLERY = [
-    {src:'haircut.webp',        cap:'Женская стрижка на длинные волосы', pos:'center 22%'},
+    {src:'haircut.webp',        cap:'Женская стрижка на длинные волосы'},
     {src:'manicure-nude.webp',  cap:'Маникюр в нюдовом оттенке'},
     {src:'makeup-blonde.webp',  cap:'Макияж и укладка'},
-    {src:'hair-blonde.webp',    cap:'Окрашивание в блонд', pos:'center 18%'},
+    {src:'hair-blonde.webp',    cap:'Окрашивание в блонд'},
 
     {src:'manicure-gold.webp',  cap:'Маникюр с золотой поталью'},
-    {src:'hair-waves.webp',     cap:'Голливудские локоны', pos:'center 20%'},
+    {src:'hair-waves.webp',     cap:'Голливудские локоны'},
     {src:'pedicure.webp',       cap:'Педикюр с французским покрытием'},
     {src:'evening-look.webp',   cap:'Вечерний образ: укладка, макияж, маникюр'},
 
-    {src:'hair-shine.webp',     cap:'Кератиновое выпрямление', pos:'center 18%'},
+    {src:'hair-shine.webp',     cap:'Кератиновое выпрямление'},
     {src:'manicure-pearl.webp', cap:'Маникюр с перламутровым покрытием'},
-    {src:'hair-styling.webp',   cap:'Укладка на длинные волосы', pos:'center 20%'},
+    {src:'hair-styling.webp',   cap:'Укладка на длинные волосы'},
     {src:'manicure-pink.webp',  cap:'Маникюр с длиной'}
   ];
 
