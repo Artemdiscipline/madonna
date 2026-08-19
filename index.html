@@ -493,7 +493,10 @@ section[id],#top{scroll-margin-top:98px}
   background:var(--bg);border-radius:var(--radius-lg);max-width:820px;width:100%;
   padding:22px;position:relative;max-height:88vh;overflow:auto;
 }
-.lb-inner .photo-slot{aspect-ratio:3/2;min-height:260px}
+/* В лайтбоксе снимок показываем целиком: слот подстраивается под фото,
+   а не наоборот. Поэтому contain, а не cover. */
+.lb-inner .photo-slot{aspect-ratio:auto;min-height:0;border:0;background:transparent}
+.lb-inner .photo-slot img{width:auto;height:auto;max-width:100%;max-height:72vh;object-fit:contain}
 .lb-cap{margin-top:16px;font-size:14.5px;color:var(--muted);text-align:center;padding:0 40px}
 .lb-close,.lb-prev,.lb-next{
   position:absolute;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);
@@ -994,7 +997,7 @@ section[id],#top{scroll-margin-top:98px}
 
         <!-- Волосы -->
         <article class="svc rv">
-          <div class="photo-slot has-photo" role="img" aria-label="Фотография результата окрашивания волос в салоне Мадонна"><img src="photos/hair-keratin.webp" alt="Длинные гладкие волосы после кератинового выпрямления в салоне «Мадонна»" loading="lazy" decoding="async"></div>
+          <div class="photo-slot has-photo" role="img" aria-label="Фотография результата окрашивания волос в салоне Мадонна"><img src="photos/hair-keratin.webp" alt="Длинные гладкие волосы после кератинового выпрямления в салоне «Мадонна»" style="object-position:center 20%" loading="lazy" decoding="async"></div>
           <div class="svc-body">
             <h3>Волосы</h3>
             <ul class="svc-list">
@@ -1858,19 +1861,19 @@ section[id],#top{scroll-margin-top:98px}
      иначе ряд выглядит однообразно. Добавляете снимок — вставляйте его
      между работами другого направления. */
   var GALLERY = [
-    {src:'haircut.webp',        cap:'Женская стрижка на длинные волосы'},
+    {src:'haircut.webp',        cap:'Женская стрижка на длинные волосы', pos:'center 22%'},
     {src:'manicure-nude.webp',  cap:'Маникюр в нюдовом оттенке'},
     {src:'makeup-blonde.webp',  cap:'Макияж и укладка'},
-    {src:'hair-blonde.webp',    cap:'Окрашивание в блонд'},
+    {src:'hair-blonde.webp',    cap:'Окрашивание в блонд', pos:'center 18%'},
 
     {src:'manicure-gold.webp',  cap:'Маникюр с золотой поталью'},
-    {src:'hair-waves.webp',     cap:'Голливудские локоны'},
+    {src:'hair-waves.webp',     cap:'Голливудские локоны', pos:'center 20%'},
     {src:'pedicure.webp',       cap:'Педикюр с французским покрытием'},
     {src:'evening-look.webp',   cap:'Вечерний образ: укладка, макияж, маникюр'},
 
-    {src:'hair-shine.webp',     cap:'Кератиновое выпрямление'},
+    {src:'hair-shine.webp',     cap:'Кератиновое выпрямление', pos:'center 18%'},
     {src:'manicure-pearl.webp', cap:'Маникюр с перламутровым покрытием'},
-    {src:'hair-styling.webp',   cap:'Укладка на длинные волосы'},
+    {src:'hair-styling.webp',   cap:'Укладка на длинные волосы', pos:'center 20%'},
     {src:'manicure-pink.webp',  cap:'Маникюр с длиной'}
   ];
 
@@ -1887,6 +1890,9 @@ section[id],#top{scroll-margin-top:98px}
     img.alt = item.cap + ' — салон красоты «Мадонна», Котельники';
     img.loading = 'lazy';
     img.decoding = 'async';
+    /* pos сдвигает видимую часть кадра: у причёсок кадрируем ближе к верху,
+       иначе макушка уходит под обрез. */
+    if (item.pos) img.style.objectPosition = item.pos;
     frame.appendChild(img);
     btn.appendChild(frame);
     btn.addEventListener('click', function(){ openLb(i); });
